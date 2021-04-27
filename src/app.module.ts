@@ -1,10 +1,16 @@
 import { Module } from '@nestjs/common';
+import { ConfigModule } from '@nestjs/config';
 import { AppController } from './app.controller';
-import { AppService } from './app.service';
+import { BitcoinAddressModule } from './bitcoin-address/bitcoin-address.module';
 
 @Module({
-  imports: [],
+  imports: [
+    ConfigModule.forRoot({
+      isGlobal: true,
+      envFilePath: ['.env'],
+    }),
+    BitcoinAddressModule,
+  ],
   controllers: [AppController],
-  providers: [AppService],
 })
 export class AppModule {}
