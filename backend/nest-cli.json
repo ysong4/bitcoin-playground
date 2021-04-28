@@ -10,9 +10,6 @@
           "introspectComments": true
         }
       }
-    ],
-    "assets": [
-      "self-signed-tls/**/*"
     ]
   }
 }
