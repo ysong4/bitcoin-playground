@@ -3,21 +3,22 @@ import { ConfigService } from '@nestjs/config';
 import { NestFactory } from '@nestjs/core';
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 import { AppModule } from './app.module';
-import fs from 'fs';
-import path from 'path';
+// import fs from 'fs';
+// import path from 'path';
 
 async function bootstrap() {
-  // Setup TLS
-  const httpsOptions = {
-    key: fs.readFileSync(path.join(__dirname, './self-signed-tls/MyKey.key')),
-    cert: fs.readFileSync(
-      path.join(__dirname, './self-signed-tls/MyCertificate.crt'),
-    ),
-  };
+  // // Setup TLS
+  // const httpsOptions = {
+  //   key: fs.readFileSync(path.join(__dirname, './self-signed-tls/MyKey.key')),
+  //   cert: fs.readFileSync(
+  //     path.join(__dirname, './self-signed-tls/MyCertificate.crt'),
+  //   ),
+  // };
 
-  const app = await NestFactory.create(AppModule, {
-    httpsOptions: httpsOptions,
-  });
+  // const app = await NestFactory.create(AppModule, {
+  //   httpsOptions: httpsOptions,
+  // });
+  const app = await NestFactory.create(AppModule);
   const configService = app.get(ConfigService);
 
   // class-validation setup

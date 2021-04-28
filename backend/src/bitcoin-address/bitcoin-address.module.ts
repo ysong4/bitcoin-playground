@@ -4,6 +4,6 @@ import { BitcoinAddressService } from './bitcoin-address.service';
 
 @Module({
   controllers: [BitcoinAddressController],
-  providers: [BitcoinAddressService]
+  providers: [BitcoinAddressService],
 })
 export class BitcoinAddressModule {}
