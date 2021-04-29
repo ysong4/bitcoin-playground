@@ -19,8 +19,8 @@ export function IsNotLargerThan(
         validate(value: any, args: ValidationArguments) {
           const [relatedPropertyName] = args.constraints;
           const relatedValue = (args.object as any)[relatedPropertyName];
-          // value: m
-          // relatedValue: n
+          // value: n
+          // relatedValue: m
           return (
             typeof value === 'number' &&
             typeof relatedValue === 'number' &&

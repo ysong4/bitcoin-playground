@@ -25,7 +25,7 @@ export function IsValidPath(validationOptions?: ValidationOptions) {
                 val = val.slice(0, -1);
               }
               const childIndex = parseInt(val, 10);
-              if (Number(val) === NaN) {
+              if (isNaN(+val)) {
                 throw Error('ChildIndex is not a number');
               }
               if (Number(val) !== childIndex) {

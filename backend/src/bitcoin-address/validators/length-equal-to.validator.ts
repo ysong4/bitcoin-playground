@@ -20,7 +20,7 @@ export function LengthEqualTo(
           const [relatedPropertyName] = args.constraints;
           const relatedValue = (args.object as any)[relatedPropertyName];
           // value: publicKeys, string[]
-          // relatedValue: n, number
+          // relatedValue: m, number
           return (
             Array.isArray(value) &&
             typeof relatedValue === 'number' &&

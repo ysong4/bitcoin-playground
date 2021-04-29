@@ -31,15 +31,15 @@ export class BitcoinAddressService {
     // });
     // console.log(address);
 
-    // Native SegWit address, bec32 format, start with 'bc1'
+    // Native SegWit address, bech32 format, start with 'bc1'
     const words = bech32.toWords(publicKeyHash);
     words.unshift(0);
-    const addressBec32 = bech32.encode('bc', words);
+    const addressBech32 = bech32.encode('bc', words);
 
     // Another way to generate native segwit address
     // const { address } = bitcoin.payments.p2wpkh({ pubkey: childKey.publicKey });
 
-    return addressBec32;
+    return addressBech32;
   }
 
   async generateMultiSigP2SHAddress(
@@ -49,7 +49,7 @@ export class BitcoinAddressService {
       Buffer.from(hex, 'hex'),
     );
     const { address } = bitcoin.payments.p2sh({
-      redeem: bitcoin.payments.p2ms({ m: dto.m, pubkeys: pubKeys }),
+      redeem: bitcoin.payments.p2ms({ m: dto.n, pubkeys: pubKeys }),
     });
 
     return address;
