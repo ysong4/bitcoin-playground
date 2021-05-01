@@ -4,7 +4,7 @@ All the validation and business logic happen on the frontend.
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-This project also used Ant Design.
+This project is using Ant Design.
 
 ## How To Run? 
 

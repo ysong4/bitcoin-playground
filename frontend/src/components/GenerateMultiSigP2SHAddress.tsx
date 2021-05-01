@@ -30,7 +30,7 @@ const GenerateMultiSigP2SHAddress: React.VFC = () => {
       throw Error('n should be <= m');
     }
   };
-  
+
   const validatePublicKey = async (_: any, publicKey: string) => {
     if (!isHex(publicKey)) {
       throw Error('public key should be in hex format');
@@ -46,8 +46,8 @@ const GenerateMultiSigP2SHAddress: React.VFC = () => {
     const { address } = bitcoin.payments.p2sh({
       redeem: bitcoin.payments.p2ms({ m: values.n, pubkeys: pubKeys }),
     });
-    
-    outputForm.setFieldsValue({"address": address});
+
+    outputForm.setFieldsValue({ address: address });
   };
 
   return (
@@ -64,7 +64,11 @@ const GenerateMultiSigP2SHAddress: React.VFC = () => {
           label="m"
           rules={[{ required: true, validator: validateM }]}
         >
-          <InputNumber min={1} />
+          <InputNumber
+            min={2}
+            placeholder="number of public keys"
+            style={{ width: '40%' }}
+          />
         </Form.Item>
 
         <Form.Item
@@ -72,7 +76,11 @@ const GenerateMultiSigP2SHAddress: React.VFC = () => {
           label="n"
           rules={[{ required: true, validator: validateN }]}
         >
-          <InputNumber min={1} />
+          <InputNumber
+            min={2}
+            placeholder="number of signatures to use this address"
+            style={{ width: '40%' }}
+          />
         </Form.Item>
 
         <Form.List
@@ -81,7 +89,7 @@ const GenerateMultiSigP2SHAddress: React.VFC = () => {
             {
               validator: async (_, publicKeys) => {
                 if (!publicKeys || publicKeys.length < 2) {
-                  return Promise.reject(new Error('At least 2 public keys'));
+                  throw Error('At least 2 public keys');
                 }
               },
             },

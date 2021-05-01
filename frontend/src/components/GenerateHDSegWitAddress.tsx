@@ -88,14 +88,14 @@ const GenerateHDSegWitAddress: React.VFC = () => {
           label="Seed"
           rules={[{ required: true, validator: validateSeed }]}
         >
-          <Input />
+          <Input placeholder="a 64 bytes hex string"/>
         </Form.Item>
         <Form.Item
           name="path"
           label="HD Path"
           rules={[{ required: true, validator: validatePath }]}
         >
-          <Input />
+          <Input placeholder="e.g. m/44'/0'/0'/0/0"/>
         </Form.Item>
         <Form.Item {...tailLayout}>
           <Button type="primary" htmlType="submit">
@@ -110,7 +110,7 @@ const GenerateHDSegWitAddress: React.VFC = () => {
       </StyledRow>
       <Form {...layout} form={form}>
         <Form.Item name="address" label="Generated Address">
-          <Input placeholder="Don't input anything here, it is for output" />
+          <Input placeholder="for output only" />
         </Form.Item>
       </Form>
     </>
