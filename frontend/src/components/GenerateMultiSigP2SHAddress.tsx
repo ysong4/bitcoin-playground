@@ -41,11 +41,12 @@ const GenerateMultiSigP2SHAddress: React.VFC = () => {
     if (!isHex(publicKey)) {
       throw Error('public key should be in hex format');
     }
+    if (publicKey.length !== 66) {
+      throw Error('public key length should be 66 in hex format, which is 33 bytes');
+    }
   };
 
   const onFinish = (values: FormValues) => {
-    console.log('Generate n-out-of-m MultiSignature P2SH Address:', values);
-
     const pubKeys = values.publicKeys.map((hex: string) =>
       Buffer.from(hex, 'hex'),
     );
@@ -84,7 +85,6 @@ const GenerateMultiSigP2SHAddress: React.VFC = () => {
     const addressP2SH = base58checkEncode(
       Buffer.concat([Buffer.from([MAINNET_PREFIX]), scriptHash]),
     );
-    // console.log('self', redeemScript.toString('hex'));
     // console.log('self', addressP2SH, addressP2SH === address);
 
     outputForm.setFieldsValue({ address: addressP2SH });
@@ -142,7 +142,7 @@ const GenerateMultiSigP2SHAddress: React.VFC = () => {
               {fields.map((field, index) => (
                 <Form.Item
                   {...(index === 0 ? layout : tailLayout)}
-                  label={index === 0 ? 'Public Keys' : ''}
+                  label={index === 0 ? 'Public Keys (compressed)' : ''}
                   required={false}
                   key={field.key}
                 >

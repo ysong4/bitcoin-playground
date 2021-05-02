@@ -2,9 +2,9 @@
 
 The `frontend` and `backend` are two separate apps.
 
-The `frontend` contains the final version of the app. It is a `create-react-app` generated project, all validation and business logic happen on frontend.
+The `frontend` contains the final version of the app. It is a `create-react-app` generated project, all validation and business logic happen on frontend. It is my own implementation to generate address.
 
-The `backend` is my first implementation of the app, it is a backend server in NestJS (all logic on backend) and it provide a swagger for user to interactive with it.
+The `backend` is my first implementation of the app, it is a backend server written in NestJS (all logic on backend) and it provide a swagger for user to interactive with it. It is using `hdkey` and `bitcoinjs-lib` to generate address.
 
 ## How to run?
 
