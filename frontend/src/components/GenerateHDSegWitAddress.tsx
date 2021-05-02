@@ -1,9 +1,8 @@
 import { Button, Col, Form, Input, Row, Typography } from 'antd';
 import HDKey from 'hdkey';
-import crypto from 'crypto';
 import { bech32 } from 'bech32';
 import styled from 'styled-components';
-import isHex from '../utils/common';
+import { hash160, isHex } from '../utils/common';
 import { layout, tailLayout } from '../common/formLayout';
 
 const { Title } = Typography;
@@ -64,8 +63,7 @@ const GenerateHDSegWitAddress: React.VFC = () => {
     const childKey = hdKey.derive(values.path);
 
     // hash160
-    const sha = crypto.createHash('sha256').update(childKey.publicKey).digest();
-    const publicKeyHash = crypto.createHash('ripemd160').update(sha).digest();
+    const publicKeyHash = hash160(childKey.publicKey);
 
     // Native SegWit address, bech32 format, start with 'bc1'
     const words = bech32.toWords(publicKeyHash);
