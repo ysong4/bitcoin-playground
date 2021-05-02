@@ -22,9 +22,6 @@ $ yarn start
 
 # watch mode
 $ yarn start:dev
-
-# production mode
-$ yarn start:prod
 ```
 
-After running up the app locally, the API swagger will be available at http://localhost:3000/api.
+After running up the app locally, the API swagger will be available at http://localhost:3001/api.
